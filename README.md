@@ -1,7 +1,5 @@
 # Profile Crafting System
 
-![Profile Crafting System Dashboard](path_to_image)
-
 Welcome to the Profile Crafting System! This application allows users to create and manage their professional profiles with ease. Below is an overview of the features available in the system.
 
 ## Features
