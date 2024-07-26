@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SkillController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BlogPostController;
 use App\Http\Controllers\ContactDataController;
@@ -45,19 +46,19 @@ Route::middleware(['auth', 'user-access'])->group(function () {
     // Route::view('/PersonalInfo','UserProfile.PersonalInfo');
     // Route::view('/ProfessionalSummary','UserProfile.ProfessionalSummary');
     // Route::view('/Contact','UserProfile.Contact');
-    Route::view('/Skill','UserProfile.Skill');
-    Route::view('/Education','UserProfile.Education');
-    Route::view('/Experience','UserProfile.Experience');
-    Route::view('/Project','UserProfile.Project');
-    Route::view('/BlogPost','UserProfile.BlogPost');
+    // Route::view('/Skill', 'UserProfile.Skill');
+    Route::view('/Education', 'UserProfile.Education');
+    Route::view('/Experience', 'UserProfile.Experience');
+    Route::view('/Project', 'UserProfile.Project');
+    Route::view('/BlogPost', 'UserProfile.BlogPost');
 
 
     //frontend
-    route::view('/about','front-end.pages.about');
-    route::view('/contact','front-end.pages.contact');
-    route::view('/portfolio','front-end.pages.portfolio');
-    route::view('/blog','front-end.pages.blog');
-    route::view('/resume','front-end.pages.resume');
+    route::view('/about', 'front-end.pages.about');
+    route::view('/contact', 'front-end.pages.contact');
+    route::view('/portfolio', 'front-end.pages.portfolio');
+    route::view('/blog', 'front-end.pages.blog');
+    route::view('/resume', 'front-end.pages.resume');
 
 
 
@@ -87,6 +88,13 @@ Route::middleware(['auth', 'user-access'])->group(function () {
     Route::get('/blogX', [BlogPostController::class, 'index'])->name('blog-post.index');
     Route::delete('/blog/{id}', [BlogPostController::class, 'destroy'])->name('blog-post.destroy');
 
+
+
+
+    Route::get('/skills/create', [SkillController::class, 'create'])->name('skills.create');
+    Route::post('/skills', [SkillController::class, 'store'])->name('skills.store');
+    Route::get('/skills/edit', [SkillController::class, 'edit'])->name('skills.edit');
+    Route::put('/skills', [SkillController::class, 'update'])->name('skills.update');
 
 
 

@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="{{asset('/assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('/assets/vendor/remixicon/fonts/remixicon.css')}}">
     <style>
+
+
         body {
             background: linear-gradient(to right, #7e38c9 0%, #e5e7ec1a 100%);
             font-family: 'Nunito', sans-serif;
@@ -65,6 +67,7 @@
         .invalid-feedback {
             display: block;
         }
+
     </style>
 
     @stack('styles')
@@ -132,6 +135,10 @@
 
     <!-- app JavaScript -->
     <script src="{{asset('/assets/js/app.js')}}"></script>
+
+    {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
 
     @stack('scripts')
 </body>

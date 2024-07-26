@@ -66,11 +66,12 @@ class ProfessionalSummaryController extends Controller
 
     public function update(Request $request)
     {
+        try {
         $request->validate([
             'about_me' => 'required|string|max:5000',
         ]);
 
-        try {
+
             $summary = ProfessionalSummary::where('user_id', auth()->id())->first();
 
             if (!$summary) {
