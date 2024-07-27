@@ -7,9 +7,11 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SkillController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BlogPostController;
 use App\Http\Controllers\ContactDataController;
+use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\ProfessionalSummaryController;
 
 
@@ -35,6 +37,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+
+
+
 /*------------------------------------------
 --------------------------------------------
 All Normal Users Routes List
@@ -43,14 +49,11 @@ All Normal Users Routes List
 Route::middleware(['auth', 'user-access'])->group(function () {
 
     Route::get('/home', [HomeController::class, 'Employee'])->name('home');
-    // Route::view('/PersonalInfo','UserProfile.PersonalInfo');
-    // Route::view('/ProfessionalSummary','UserProfile.ProfessionalSummary');
-    // Route::view('/Contact','UserProfile.Contact');
-    // Route::view('/Skill', 'UserProfile.Skill');
+
     Route::view('/Education', 'UserProfile.Education');
     Route::view('/Experience', 'UserProfile.Experience');
     Route::view('/Project', 'UserProfile.Project');
-    Route::view('/BlogPost', 'UserProfile.BlogPost');
+
 
 
     //frontend
@@ -97,6 +100,17 @@ Route::middleware(['auth', 'user-access'])->group(function () {
     Route::put('/skills', [SkillController::class, 'update'])->name('skills.update');
 
 
+    Route::get('subscriptions', [SubscriptionController::class, 'index'])->name('subscriptions.index');
+    Route::get('subscriptions/create', [SubscriptionController::class, 'create'])->name('subscriptions.create');
+    Route::post('subscriptions', [SubscriptionController::class, 'store'])->name('subscriptions.store');
+    Route::get('subscriptions/{id}/edit', [SubscriptionController::class, 'edit'])->name('subscriptions.edit');
+    Route::put('subscriptions/{id}', [SubscriptionController::class, 'update'])->name('subscriptions.update');
+
+
+
+    Route::post('/payment/process', [PaymentController::class, 'processPayment'])->name('payment.process');
+
+
 
 });
 
@@ -126,33 +140,17 @@ Route::middleware(['auth', 'user-access'])->group(function () {
 
 
 
-/*------------------------------------------
---------------------------------------------
-All Admin Routes List
---------------------------------------------
---------------------------------------------*/
+
+
+Route::middleware(['auth', 'admin-access'])->group(function () {
+
+    Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
 
 
 
-// Route::middleware(['auth', 'admin-access'])->group(function () {
-
-//     Route::get('/admin/home', [HomeController::class, 'adminHome'])->name('admin.home');
+});
 
 
 
-// });
-
-/*------------------------------------------
---------------------------------------------
-All Admin Routes List
---------------------------------------------
---------------------------------------------*/
 
 
-
-// Route::middleware(['auth', 'manager-access'])->group(function () {
-
-//     Route::get('/manager/home', [HomeController::class, 'managerHome'])->name('manager.home');
-
-
-// });

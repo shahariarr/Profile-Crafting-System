@@ -83,6 +83,12 @@ class User extends Authenticatable
         return $this->belongsToMany(Skill::class);
     }
 
+    public function subscription()
+    {
+        return $this->hasOne(Subscription::class);
+    }
+
+
 
 
 
