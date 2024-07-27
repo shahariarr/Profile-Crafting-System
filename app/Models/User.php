@@ -88,6 +88,21 @@ class User extends Authenticatable
         return $this->hasOne(Subscription::class);
     }
 
+    public function education()
+    {
+        return $this->hasOne(Education::class);
+    }
+
+    public function experience()
+    {
+        return $this->hasOne(Experience::class);
+    }
+
+    public function project()
+    {
+        return $this->hasOne(Project::class);
+    }
+
 
 
 

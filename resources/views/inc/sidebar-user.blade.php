@@ -72,8 +72,8 @@
                         <span class="ml-4">Skill</span>
                     </a>
                 </li>
-                <li class="{{ Request::is('Education') ? 'active' : '' }}">
-                    <a href="{{ url('/Education') }}" class="svg-icon">
+                <li class="{{ Route::is('education.create', 'education.edit') ? 'active' : '' }}">
+                    <a href="{{ route('education.create') }}" class="svg-icon">
                         <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                             viewBox="0 0 24 24">
@@ -84,8 +84,8 @@
                         <span class="ml-4">Education</span>
                     </a>
                 </li>
-                <li class="{{ Request::is('Experience') ? 'active' : '' }}">
-                    <a href="{{ url('/Experience') }}" class="svg-icon">
+                <li class="{{ Route::is('experience.create', 'experience.edit') ? 'active' : '' }}">
+                    <a href="{{ route('experience.create') }}" class="svg-icon">
                         <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                             viewBox="0 0 24 24">
@@ -97,8 +97,8 @@
                         <span class="ml-4">Experience</span>
                     </a>
                 </li>
-                <li class="{{ Request::is('Project') ? 'active' : '' }}">
-                    <a href="{{ url('/Project') }}" class="svg-icon">
+                <li class="{{ Route::is('project.create', 'project.edit') ? 'active' : '' }}">
+                    <a href="{{ route('project.create') }}" class="svg-icon">
                         <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
                             viewBox="0 0 24 24">
