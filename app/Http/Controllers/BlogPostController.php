@@ -32,7 +32,7 @@ class BlogPostController extends Controller
 
             if ($request->hasFile('image')) {
                 $imageName = time().'.'.$request->image->extension();
-                $request->image->move(public_path('images'), $imageName);
+                $request->image->move(public_path('blog_images'), $imageName);
                 $blogPost->image = $imageName;
             }
 
@@ -78,8 +78,13 @@ class BlogPostController extends Controller
             $blogPost->content = $request->content;
 
             if ($request->hasFile('image')) {
-                $imageName = time().'.'.$request->image->extension();
-                $request->image->move(public_path('images'), $imageName);
+                // Delete the old image if it exists
+                if ($blogPost->image && file_exists(public_path('blog_images/' . $blogPost->image))) {
+                    unlink(public_path('blog_images/' . $blogPost->image));
+                }
+
+                $imageName = time() . '.' . $request->image->extension();
+                $request->image->move(public_path('blog_images'), $imageName);
                 $blogPost->image = $imageName;
             }
 

@@ -62,7 +62,7 @@
                         </div>
                             @if($profile->image)
                             <div class="mb-3">
-                                <img src="{{ asset('images/' . $profile->image) }}" alt="Current Image" class="img-fluid mt-2" style="max-width: 150px;">
+                                <img src="{{ asset('profile_images/' . $profile->image) }}" alt="Current Image" class="img-fluid mt-2" style="max-width: 150px;">
                             </div>
                             @endif
 

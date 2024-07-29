@@ -36,10 +36,16 @@ class ProjectController extends Controller
             $projectData['user_id'] = Auth::id();
 
             if (isset($projectData['image'])) {
+                // If there's an existing project with an image, delete the old image
+                if (isset($projectData['id'])) {
+                    $existingProject = Project::find($projectData['id']);
+                    if ($existingProject && $existingProject->image) {
+                        Storage::disk('public')->delete($existingProject->image);
+                    }
+                }
+
                 $imagePath = $projectData['image']->store('project_images', 'public');
                 $projectData['image'] = $imagePath;
-            } else {
-                $projectData['image'] = null;
             }
 
             Project::updateOrCreate(
@@ -86,6 +92,11 @@ class ProjectController extends Controller
                 $project = Project::where('user_id', Auth::id())->findOrFail($key);
 
                 if (isset($projectData['image'])) {
+                    // Delete the old image if a new one is uploaded
+                    if ($project->image) {
+                        Storage::disk('public')->delete($project->image);
+                    }
+
                     $imagePath = $projectData['image']->store('project_images', 'public');
                     $projectData['image'] = $imagePath;
                 }
@@ -95,6 +106,7 @@ class ProjectController extends Controller
             }
         }
 
+        // Delete projects not in the updated list
         Project::where('user_id', Auth::id())->whereNotIn('id', $updatedIds)->delete();
 
         return redirect()->route('project.edit')->with('success', 'Project details updated successfully');

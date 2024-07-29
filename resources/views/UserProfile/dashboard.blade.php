@@ -41,6 +41,7 @@
                         <li>Updated project A</li>
                         <li>Completed task B</li>
                         <li>Added new task C</li>
+                    
                     </ul>
                 </div>
             </div>

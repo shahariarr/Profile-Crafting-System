@@ -39,7 +39,7 @@
                                         <td>{{ Str::limit($blogPost->content, 50) }}</td>
                                         <td>
                                             @if ($blogPost->image)
-                                                <img src="{{ asset('images/' . $blogPost->image) }}" alt="Image" class="img-thumbnail" style="max-width: 100px;">
+                                                <img src="{{ asset('blog_images/' . $blogPost->image) }}" alt="Image" class="img-thumbnail" style="max-width: 100px;">
                                             @else
                                                 <span class="text-muted">No Image</span>
                                             @endif

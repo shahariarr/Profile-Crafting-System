@@ -15,6 +15,25 @@
                     <form action="{{ route('profile.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <!-- Add form fields here (same as in edit.blade.php) -->
+
+                        <div class="form-group text-center">
+
+                            <div class="image-upload">
+
+                                <label for="image">
+                                    <div class="image-preview" id="imagePreview">
+                                        <img src="{{asset('front-end/assets/images/WhatsApp%20Image%202023-05-19%20at%208.22.27%20PM%20(1).png')}}" alt="Profile Image" class="image">
+                                    </div>
+                                </label>
+
+                                <input type="file" class="d-none" id="image" name="image" accept="image/*">
+                                <label for="image" class="d-block">Upload Your Profile Image</label>
+
+
+                            </div>
+                            <button type="button" class="btn btn-secondary mt-3" id="cancelImage">Cancel Image</button>
+                        </div>
+
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label for="first_name">First Name</label>
@@ -44,10 +63,7 @@
                             <label for="languages">Languages</label>
                             <input type="text" class="form-control" id="languages" name="languages" value="{{ old('languages') }}" placeholder="English, Spanish" required>
                         </div>
-                        <div class="mb-3 custom-file">
-                            <input type="file" class="custom-file-input" id="image" name="image" >
-                            <label class="custom-file-label" for="image">Choose file</label>
-                        </div>
+
                         <button type="submit" class="btn btn-primary btn-block">Submit</button>
                     </form>
                 </div>
@@ -55,4 +71,51 @@
         </div>
     </div>
 </div>
+
+<style>
+    .image-upload .image-preview {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        overflow: hidden;
+        background-color: #f0f0f0;
+        border: 3px solid #ddd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+    }
+    .image-upload .image-preview img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .btn-secondary {
+        background-color: #6c757d;
+        border: none;
+        transition: background-color 0.3s;
+    }
+    .btn-secondary:hover {
+        background-color: #5a6268;
+    }
+</style>
+
+<script>
+    document.getElementById('image').addEventListener('change', function() {
+        const [file] = this.files;
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('imagePreview').querySelector('img').src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    document.getElementById('cancelImage').addEventListener('click', function() {
+        document.getElementById('image').value = '';
+        document.getElementById('imagePreview').querySelector('img').src = 'path-to-default-image.png';
+    });
+</script>
 @endsection

@@ -47,7 +47,7 @@
                         <!-- Display Current Image if exists -->
                         @if($blogPost->image)
                             <div class="mb-3">
-                                <img src="{{ asset('images/' . $blogPost->image) }}" alt="Current Image" class="img-fluid mt-2" style="max-width: 150px;">
+                                <img src="{{ asset('blog_images/' . $blogPost->image) }}" alt="Current Image" class="img-fluid mt-2" style="max-width: 150px;">
                             </div>
                         @endif
 

@@ -44,10 +44,15 @@
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="image{{ $project->id }}" class="form-label">Image (optional)</label>
-                                            <input type="file" class="form-control" name="projects[{{ $project->id }}][image]" id="image{{ $project->id }}">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" name="projects[{{ $project->id }}][image]" id="image{{ $project->id }}" onchange="previewImage(event, {{ $project->id }})">
+                                                <label class="custom-file-label" for="image{{ $project->id }}">Choose file</label>
+                                            </div>
                                             @if($project->image)
-                                            <img src="{{ Storage::url('project_images/' . $project->image) }}" alt="Project Image" class="img-fluid mt-2" style="max-height: 150px;">
-                                             @endif
+                                            <img src="{{ asset('storage/' . $project->image) }}" alt="Project Image" class="img-fluid mt-2" style="max-height: 150px;" id="preview{{ $project->id }}">
+                                            @else
+                                            <img src="#" alt="Project Image" class="img-fluid mt-2" style="max-height: 150px; display: none;" id="preview{{ $project->id }}">
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -102,7 +107,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     <div class="col-md-6">
                         <label for="image${projectIndex}" class="form-label">Image (optional)</label>
-                        <input type="file" class="form-control" name="projects[new${projectIndex}][image]" id="image${projectIndex}">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" name="projects[new${projectIndex}][image]" id="image${projectIndex}" onchange="previewImage(event, 'new${projectIndex}')">
+                            <label class="custom-file-label" for="image${projectIndex}">Choose file</label>
+                        </div>
+                        <img id="previewnew${projectIndex}" src="#" alt="Image Preview" class="img-fluid mt-2" style="max-height: 150px; display: none;">
                     </div>
                 </div>
                 <button type="button" class="btn btn-outline-danger mt-3 remove-project" onclick="removeProject(${projectIndex})">Remove</button>
@@ -112,6 +121,16 @@ document.addEventListener('DOMContentLoaded', function() {
         projectIndex++;
     });
 });
+
+function previewImage(event, index) {
+    const reader = new FileReader();
+    reader.onload = function() {
+        const preview = document.getElementById('preview' + index);
+        preview.src = reader.result;
+        preview.style.display = 'block';
+    }
+    reader.readAsDataURL(event.target.files[0]);
+}
 
 function removeProject(index) {
     const group = document.getElementById('projectGroup' + index);

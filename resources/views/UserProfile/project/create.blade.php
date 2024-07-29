@@ -58,8 +58,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         <input type="url" class="form-control" name="projects[${projectIndex}][demo]" placeholder="Demo URL">
                     </div>
                     <div class="col-md-6">
-                        <label for="image${projectIndex}" class="form-label">Image (optional)</label>
-                        <input type="file" class="form-control" name="projects[${projectIndex}][image]" id="image${projectIndex}">
+                        <div class="mb-3">
+                            <label for="image${projectIndex}" class="form-label">Image (optional)</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="projects[${projectIndex}][image]" id="image${projectIndex}" onchange="previewImage(event, ${projectIndex})">
+                                <label class="custom-file-label" for="image${projectIndex}">Choose file</label>
+                            </div>
+                            <img id="preview${projectIndex}" src="#" alt="Image Preview" class="img-fluid mt-2" style="max-height: 150px; display: none;">
+                        </div>
                     </div>
                 </div>
                 <button type="button" class="btn btn-outline-danger mt-3 remove-project" onclick="removeProject(${projectIndex})">Remove</button>
@@ -69,6 +75,16 @@ document.addEventListener('DOMContentLoaded', function() {
         projectIndex++;
     });
 });
+
+function previewImage(event, index) {
+    const reader = new FileReader();
+    reader.onload = function() {
+        const output = document.getElementById('preview' + index);
+        output.src = reader.result;
+        output.style.display = 'block';
+    };
+    reader.readAsDataURL(event.target.files[0]);
+}
 
 function removeProject(index) {
     const group = document.getElementById('projectGroup' + index);

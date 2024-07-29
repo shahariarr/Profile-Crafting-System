@@ -53,9 +53,6 @@ Route::middleware(['auth', 'user-access'])->group(function () {
 
     Route::get('/home', [HomeController::class, 'Employee'])->name('home');
 
-    Route::view('/Education', 'UserProfile.Education');
-    Route::view('/Experience', 'UserProfile.Experience');
-    Route::view('/Project', 'UserProfile.Project');
 
 
 
@@ -65,6 +62,8 @@ Route::middleware(['auth', 'user-access'])->group(function () {
     route::view('/portfolio', 'front-end.pages.portfolio');
     route::view('/blog', 'front-end.pages.blog');
     route::view('/resume', 'front-end.pages.resume');
+
+
 
 
 

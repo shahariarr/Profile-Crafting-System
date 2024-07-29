@@ -72,7 +72,7 @@ class ProfileController extends Controller
 
             if ($request->hasFile('image')) {
                 $imageName = time() . '.' . $request->image->extension();
-                $request->image->move(public_path('images'), $imageName);
+                $request->image->move(public_path('profile_images'), $imageName);
                 $profile->image = $imageName;
             }
 
@@ -87,7 +87,6 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         try {
-
             $request->validate([
                 'first_name' => 'required|string|max:255',
                 'last_name' => 'required|string|max:255',
@@ -112,8 +111,13 @@ class ProfileController extends Controller
             $profile->languages = $request->languages;
 
             if ($request->hasFile('image')) {
+                // Delete the old image if it exists
+                if ($profile->image && file_exists(public_path('profile_images/' . $profile->image))) {
+                    unlink(public_path('profile_images/' . $profile->image));
+                }
+
                 $imageName = time() . '.' . $request->image->extension();
-                $request->image->move(public_path('images'), $imageName);
+                $request->image->move(public_path('profile_images'), $imageName);
                 $profile->image = $imageName;
             }
 
