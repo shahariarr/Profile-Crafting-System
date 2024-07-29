@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ShowController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
@@ -54,14 +55,6 @@ Route::middleware(['auth', 'user-access'])->group(function () {
     Route::get('/home', [HomeController::class, 'Employee'])->name('home');
 
 
-
-
-    //frontend
-    route::view('/about', 'front-end.pages.about');
-    route::view('/contact', 'front-end.pages.contact');
-    route::view('/portfolio', 'front-end.pages.portfolio');
-    route::view('/blog', 'front-end.pages.blog');
-    route::view('/resume', 'front-end.pages.resume');
 
 
 
@@ -133,6 +126,16 @@ Route::middleware(['auth', 'user-access'])->group(function () {
     Route::post('/project/store', [ProjectController::class, 'store'])->name('project.store');
     Route::get('/project/edit', [ProjectController::class, 'edit'])->name('project.edit');
     Route::put('/project/update', [ProjectController::class, 'update'])->name('project.update');
+
+
+
+
+    Route::get('/profile', [ShowController::class, 'show'])->name('sidebar');
+
+
+
+
+
 
 
 

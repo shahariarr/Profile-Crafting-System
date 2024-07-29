@@ -45,7 +45,7 @@
                                             <h5 class="mb-1">{{ Auth::user()->name }}</h5>
                                             <p class="mb-0">{{ Auth::user()->email }}</p>
                                             <div class="d-flex align-items-center justify-content-center mt-3">
-                                                <a href="{{url("/about")}}"
+                                                <a href="{{url("/profile")}}"
                                                     class="btn border mr-2" target="_blank">Profile</a>
                                                     <form action="{{ route('logout') }}" method="POST">
                                                         @csrf

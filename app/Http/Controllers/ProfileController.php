@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Models\Profile;
+use App\Models\ContactData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Exception;
 
 class ProfileController extends Controller
 {
@@ -13,12 +14,13 @@ class ProfileController extends Controller
     {
         try {
             $profile = Profile::where('user_id', auth()->id())->first();
+            $contactData = ContactData::where('user_id', auth()->id())->first();
 
             if (!$profile) {
                 return redirect()->route('profile.create');
             }
 
-            return view('UserProfile.profile.edit', compact('profile'));
+            return view('UserProfile.profile.edit', compact('profile', 'contactData'));
         } catch (Exception $e) {
             return redirect()->route('profile.create')->with('error', 'An error occurred while retrieving your profile.');
         }
@@ -49,9 +51,10 @@ class ProfileController extends Controller
                 'nationality' => 'required|string|max:255',
                 'freelance' => 'required|boolean',
                 'languages' => 'required|string|max:255',
+                'role' => 'required|string|max:255', // Added validation for role
+                'birth' => 'required|date', // Added validation for birth
                 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
-
 
             $user = Auth::user();
 
@@ -69,6 +72,8 @@ class ProfileController extends Controller
             $profile->nationality = $request->nationality;
             $profile->freelance = $request->freelance;
             $profile->languages = $request->languages;
+            $profile->role = $request->role; // Added role field
+            $profile->birth = $request->birth; // Added birth field
 
             if ($request->hasFile('image')) {
                 $imageName = time() . '.' . $request->image->extension();
@@ -94,6 +99,8 @@ class ProfileController extends Controller
                 'nationality' => 'required|string|max:255',
                 'freelance' => 'required|boolean',
                 'languages' => 'required|string|max:255',
+                'role' => 'required|string|max:255', // Added validation for role
+                'birth' => 'required|date', // Added validation for birth
                 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ]);
 
@@ -109,6 +116,8 @@ class ProfileController extends Controller
             $profile->nationality = $request->nationality;
             $profile->freelance = $request->freelance;
             $profile->languages = $request->languages;
+            $profile->role = $request->role; // Added role field
+            $profile->birth = $request->birth; // Added birth field
 
             if ($request->hasFile('image')) {
                 // Delete the old image if it exists

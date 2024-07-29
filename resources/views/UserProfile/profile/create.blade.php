@@ -14,22 +14,16 @@
                     @endif
                     <form action="{{ route('profile.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <!-- Add form fields here (same as in edit.blade.php) -->
 
                         <div class="form-group text-center">
-
                             <div class="image-upload">
-
                                 <label for="image">
                                     <div class="image-preview" id="imagePreview">
                                         <img src="{{asset('front-end/assets/images/WhatsApp%20Image%202023-05-19%20at%208.22.27%20PM%20(1).png')}}" alt="Profile Image" class="image">
                                     </div>
                                 </label>
-
                                 <input type="file" class="d-none" id="image" name="image" accept="image/*">
                                 <label for="image" class="d-block">Upload Your Profile Image</label>
-
-
                             </div>
                             <button type="button" class="btn btn-secondary mt-3" id="cancelImage">Cancel Image</button>
                         </div>
@@ -62,6 +56,15 @@
                         <div class="form-group">
                             <label for="languages">Languages</label>
                             <input type="text" class="form-control" id="languages" name="languages" value="{{ old('languages') }}" placeholder="English, Spanish" required>
+                        </div>
+                        <!-- New fields added -->
+                        <div class="form-group">
+                            <label for="role">Role</label>
+                            <input type="text" class="form-control" id="role" name="role" value="{{ old('role') }}" placeholder="e.g., Developer" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="birth">Date of Birth</label>
+                            <input type="date" class="form-control" id="birth" name="birth" value="{{ old('birth') }}" required>
                         </div>
 
                         <button type="submit" class="btn btn-primary btn-block">Submit</button>

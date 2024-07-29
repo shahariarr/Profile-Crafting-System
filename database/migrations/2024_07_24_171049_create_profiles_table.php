@@ -13,6 +13,8 @@ class CreateProfilesTable extends Migration
             $table->unsignedBigInteger('user_id')->unique();
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('role');
+            $table->string('birth');
             $table->integer('age');
             $table->string('nationality');
             $table->boolean('freelance');

@@ -55,17 +55,26 @@
                             <input type="text" class="form-control" id="languages" name="languages" value="{{ old('languages', $profile->languages ?? '') }}" placeholder="English, Spanish">
                         </div>
 
+                        <!-- New fields added -->
+                        <div class="form-group">
+                            <label for="role">Role</label>
+                            <input type="text" class="form-control" id="role" name="role" value="{{ old('role', $profile->role ?? '') }}" placeholder="e.g., Developer">
+                        </div>
+                        <div class="form-group">
+                            <label for="birth">Date of Birth</label>
+                            <input type="date" class="form-control" id="birth" name="birth" value="{{ old('birth', $profile->birth ?? '') }}">
+                        </div>
+
                         <!-- File Upload Field -->
                         <div class="mb-3 custom-file">
                             <input type="file" class="custom-file-input" id="image" name="image">
                             <label class="custom-file-label" for="image">Choose file</label>
                         </div>
-                            @if($profile->image)
-                            <div class="mb-3">
-                                <img src="{{ asset('profile_images/' . $profile->image) }}" alt="Current Image" class="img-fluid mt-2" style="max-width: 150px;">
-                            </div>
-                            @endif
-
+                        @if($profile->image)
+                        <div class="mb-3">
+                            <img src="{{ asset('profile_images/' . $profile->image) }}" alt="Current Image" class="img-fluid mt-2" style="max-width: 150px;">
+                        </div>
+                        @endif
 
                         <!-- Submit Button -->
                         <button type="submit" class="btn btn-primary btn-block">Update Information</button>
