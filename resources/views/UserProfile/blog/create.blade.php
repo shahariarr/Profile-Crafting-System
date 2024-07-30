@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card shadow-lg">
                 <div class="card-body">
                     <h4 class="card-title text-center mb-4">Create Blog Post</h4>

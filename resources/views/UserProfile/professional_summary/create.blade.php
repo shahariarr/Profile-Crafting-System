@@ -1,13 +1,16 @@
 @extends('layouts.master-user')
 
 @section('content')
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow-lg">
+<div class="container-fluid add-form-list mt-5">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="header-title">
+                        <h4 class="card-title text-center mb-4">Create Professional Summary</h4>
+                    </div>
+                </div>
                 <div class="card-body">
-                    <h4 class="card-title text-center mb-4">Create Professional Summary</h4>
-
                     <!-- Display error message -->
                     @if (session('error'))
                         <div class="alert alert-danger">

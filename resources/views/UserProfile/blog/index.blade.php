@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-12">
             <div class="card shadow-lg">
                 <div class="card-body">
                     <h4 class="card-title text-center mb-4">All Blog Posts</h4>
@@ -35,7 +35,7 @@
                             <tbody>
                                 @foreach ($blogPosts as $blogPost)
                                     <tr>
-                                        <td>{{ $blogPost->title }}</td>
+                                        <td>{{ Str::limit($blogPost->title, 50) }}</td>
                                         <td>{{ Str::limit($blogPost->content, 50) }}</td>
                                         <td>
                                             @if ($blogPost->image)
