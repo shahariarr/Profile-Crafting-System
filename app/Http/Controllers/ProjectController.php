@@ -35,17 +35,18 @@ class ProjectController extends Controller
         foreach ($request->projects as $key => $projectData) {
             $projectData['user_id'] = Auth::id();
 
+
             if (isset($projectData['image'])) {
-                // If there's an existing project with an image, delete the old image
                 if (isset($projectData['id'])) {
                     $existingProject = Project::find($projectData['id']);
-                    if ($existingProject && $existingProject->image) {
-                        Storage::disk('public')->delete($existingProject->image);
+                    if ($existingProject && $existingProject->image && file_exists(public_path('project_images/' . $existingProject->image))) {
+                        unlink(public_path('project_images/' . $existingProject->image));
                     }
                 }
 
-                $imagePath = $projectData['image']->store('project_images', 'public');
-                $projectData['image'] = $imagePath;
+                $imageName = time() . '.' . $projectData['image']->extension();
+                $projectData['image']->move(public_path('project_images'), $imageName);
+                $projectData['image'] = $imageName;
             }
 
             Project::updateOrCreate(
@@ -82,8 +83,9 @@ class ProjectController extends Controller
                 $projectData['user_id'] = Auth::id();
 
                 if (isset($projectData['image'])) {
-                    $imagePath = $projectData['image']->store('project_images', 'public');
-                    $projectData['image'] = $imagePath;
+                    $imageName = time() . '.' . $projectData['image']->extension();
+                    $projectData['image']->move(public_path('project_images'), $imageName);
+                    $projectData['image'] = $imageName;
                 }
 
                 $project = Project::create($projectData);
@@ -93,12 +95,13 @@ class ProjectController extends Controller
 
                 if (isset($projectData['image'])) {
                     // Delete the old image if a new one is uploaded
-                    if ($project->image) {
-                        Storage::disk('public')->delete($project->image);
+                    if ($project->image && file_exists(public_path('project_images/' . $project->image))) {
+                        unlink(public_path('project_images/' . $project->image));
                     }
 
-                    $imagePath = $projectData['image']->store('project_images', 'public');
-                    $projectData['image'] = $imagePath;
+                    $imageName = time() . '.' . $projectData['image']->extension();
+                    $projectData['image']->move(public_path('project_images'), $imageName);
+                    $projectData['image'] = $imageName;
                 }
 
                 $project->update($projectData);

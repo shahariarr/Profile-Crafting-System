@@ -1,6 +1,6 @@
-@php
+{{-- @php
     $projects = App\Models\Project::where('user_id', Auth::id())->get();
-@endphp
+@endphp --}}
 
 <section class="ftco-section ftco-project" id="projects-section">
     <div class="container">
@@ -8,13 +8,13 @@
             <div class="col-md-12 heading-section text-center ftco-animate">
                 <h1 class="big big-2">Projects</h1>
                 <h2 class="mb-4">Our Projects</h2>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
+                <p>Below is a showcase of our projects, demonstrating the diverse range of work and expertise we bring to each endeavor.</p>
             </div>
         </div>
         <div class="row">
             @foreach ($projects as $project)
                 <div class="col-md-{{ $loop->iteration % 2 == 0 ? '8' : '4' }}">
-                    <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url('{{ asset('storage/' . $project->image) }}');">
+                    <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url('{{ asset('project_images/' . $project->image) }}');">
                         <div class="overlay"></div>
                         <div class="text text-center p-4">
                             <h3 ><a href="{{ $project->demo }}">{{ $project->name }}</a></h3>

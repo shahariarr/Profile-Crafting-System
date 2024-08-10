@@ -1,4 +1,6 @@
 @extends('Front_End.layouts.master_layout')
+@section('title', 'Profile Crafting System')
+
 @section('content')
 
 

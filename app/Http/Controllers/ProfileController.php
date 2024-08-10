@@ -53,7 +53,7 @@ class ProfileController extends Controller
                 'languages' => 'required|string|max:255',
                 'role' => 'required|string|max:255', // Added validation for role
                 'birth' => 'required|date', // Added validation for birth
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
             ]);
 
             $user = Auth::user();
@@ -101,7 +101,7 @@ class ProfileController extends Controller
                 'languages' => 'required|string|max:255',
                 'role' => 'required|string|max:255', // Added validation for role
                 'birth' => 'required|date', // Added validation for birth
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
             ]);
 
             $profile = Profile::where('user_id', auth()->id())->first();

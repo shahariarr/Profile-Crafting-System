@@ -36,12 +36,12 @@ use App\Http\Controllers\ProfessionalSummaryController;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('landing');
 });
 
 Auth::routes();
 
-
+// Route::redirect('/','login');
 
 
 
@@ -83,7 +83,7 @@ Route::middleware(['auth', 'user-access'])->group(function () {
     Route::post('/blog/store', [BlogPostController::class, 'store'])->name('blog-post.store');
     Route::get('/blog/edit/{id}', [BlogPostController::class, 'edit'])->name('blog-post.edit');
     Route::put('/blog/update/{id}', [BlogPostController::class, 'update'])->name('blog-post.update');
-    Route::get('/blogX', [BlogPostController::class, 'index'])->name('blog-post.index');
+    Route::get('/blog', [BlogPostController::class, 'index'])->name('blog-post.index');
     Route::delete('/blog/{id}', [BlogPostController::class, 'destroy'])->name('blog-post.destroy');
 
 
@@ -130,23 +130,36 @@ Route::middleware(['auth', 'user-access'])->group(function () {
 
 
 
-    Route::get('/profile', [ShowController::class, 'show'])->name('sidebar');
 
 
 
 
+
+    // Route::view('/cv','CV.cv' )->name('cv');
 
 
 
 
 });
 
+Route::get('/cv/{unique_id}', [ShowController::class, 'show'])->name('CV');
+
+Route::get('/profile/{unique_id}', [ShowController::class, 'share'])->name('share');
+
+// Route::get('/print/{unique_id}',    [ShowController::class, 'print'])->name('print');
+
+
+
+// Route::view('/share-profile','UserProfile.share_profile.show_profile' )->name('share.profile');
 
 
 
 
 
+Route::view('/index','index' )->name('index');
 
+
+Route::view('/main','landing' )->name('main');
 
 
 

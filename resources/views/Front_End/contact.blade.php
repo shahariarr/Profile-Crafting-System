@@ -1,9 +1,3 @@
-@php
-    $contactData = App\Models\ContactData::where('user_id', auth()->id())->first();
-    $profile = App\Models\Profile::where('user_id', auth()->id())->first();
-
-@endphp
-
 <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
     <div class="container">
         <div class="row justify-content-center mb-5 pb-3">
@@ -53,7 +47,6 @@
                 </div>
             </div>
         </div>
-
         <div class="row no-gutters block-9">
             <div class="col-md-6 order-md-last d-flex">
                 <form action="#" class="bg-light p-4 p-md-5 contact-form">
@@ -76,7 +69,7 @@
             </div>
 
             <div class="col-md-6 d-flex">
-                <div class="img" style="background-image: url({{ asset('profile_images/' . $profile->image) }});"></div>
+                <div class="img" style="background-image: url({{ $profile ? asset('profile_images/' . $profile->image) : asset('front-end/xxx/Doraemon.jpeg') }});"></div>
 
             </div>
         </div>

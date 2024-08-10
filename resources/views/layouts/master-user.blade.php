@@ -7,8 +7,8 @@
     <title>@yield('title')</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{asset('/assets/images/favicon.ico')}}">
-    <link rel="stylesheet" href="{{asset('/assets/css/backend-plugin.min.css')}}">
+    <link rel="shortcut icon" href="{{asset('assets/images/favicon.ico')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/backend-plugin.min.css')}}">
     <link rel="stylesheet" href="{{asset('/assets/css/backend.css?v=1.0.0')}}">
     <link rel="stylesheet" href="{{asset('/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css')}}">
     <link rel="stylesheet" href="{{asset('/assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css')}}">
@@ -63,6 +63,31 @@
 
     {{-- <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" /> --}}
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script>
+        document.getElementById('shareButton').addEventListener('click', function(event) {
+            event.preventDefault();
+            // Display the copy URL container
+            document.getElementById('copyUrlContainer').style.display = 'block';
+        });
+
+        document.getElementById('copyButton').addEventListener('click', function() {
+            // Copy the URL to clipboard
+            var copyText = document.getElementById('profileUrl');
+            copyText.select();
+            document.execCommand('copy');
+
+            // Change button text to indicate the URL has been copied
+            var copyButton = document.getElementById('copyButton');
+            copyButton.innerText = 'Copied!';
+
+            // Reset button text after 2 seconds
+            setTimeout(function() {
+                copyButton.innerText = 'Copy';
+            }, 2000);
+        });
+    </script>
+
+
 
 
     @stack('scripts')

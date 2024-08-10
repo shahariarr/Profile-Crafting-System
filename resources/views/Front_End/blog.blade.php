@@ -1,6 +1,6 @@
-@php
+{{-- @php
     $blogPosts = App\Models\BlogPost::where('user_id', Auth::id())->get();
-@endphp
+@endphp --}}
 
 <section class="ftco-section" id="blog-section">
     <div class="container">

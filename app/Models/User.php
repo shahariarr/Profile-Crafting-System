@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Str;
+
 
 
 class User extends Authenticatable
@@ -102,6 +104,18 @@ class User extends Authenticatable
     {
         return $this->hasOne(Project::class);
     }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($user) {
+            $user->unique_id = (string) Str::uuid();
+        });
+    }
+
+
+
 
 
 

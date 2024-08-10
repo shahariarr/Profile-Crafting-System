@@ -1,4 +1,5 @@
 @extends('layouts.master-user')
+@section('title', 'Project')
 
 @section('content')
 <div class="container mt-5">
@@ -49,7 +50,7 @@
                                                 <label class="custom-file-label" for="image{{ $project->id }}">Choose file</label>
                                             </div>
                                             @if($project->image)
-                                            <img src="{{ asset('storage/' . $project->image) }}" alt="Project Image" class="img-fluid mt-2" style="max-height: 150px;" id="preview{{ $project->id }}">
+                                            <img src="{{ asset('project_images/' . $project->image) }}" alt="Project Image" class="img-fluid mt-2" style="max-height: 150px;" id="preview{{ $project->id }}">
                                             @else
                                             <img src="#" alt="Project Image" class="img-fluid mt-2" style="max-height: 150px; display: none;" id="preview{{ $project->id }}">
                                             @endif

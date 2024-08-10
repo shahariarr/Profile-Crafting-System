@@ -1,4 +1,5 @@
 @extends('layouts.master-user')
+@section('title', 'Contact-Data')
 
 @section('content')
 <div class="container-fluid add-form-list mt-5">

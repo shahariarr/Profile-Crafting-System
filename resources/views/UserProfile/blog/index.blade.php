@@ -1,4 +1,5 @@
 @extends('layouts.master-user')
+@section('title', 'Blog')
 
 @section('content')
 <div class="container mt-5">

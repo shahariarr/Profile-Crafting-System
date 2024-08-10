@@ -2,10 +2,10 @@
 
 @section('content')
 <style>
-    body {
+    /* body {
         background: linear-gradient(to right, #7e38c9 0%, #e5e7ec1a 100%);
         font-family: 'Nunito', sans-serif;
-    }
+    } */
     .auth-card {
         background: #ffffff;
         border-radius: 10px;
@@ -115,7 +115,7 @@
                             </div>
                         </div>
                         <div class="col-lg-5 content-right">
-                            <img src="../assets/images/login/01.png" class="img-fluid image-right" alt="">
+                            <img src="{{asset('/assets/images/login/01.png')}}" class="img-fluid image-right" alt="">
                         </div>
                     </div>
                 </div>

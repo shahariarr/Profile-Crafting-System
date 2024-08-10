@@ -37,13 +37,12 @@
             </div>
             <div class="col-md">
                 <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Services</h2>
+                    <h2 class="ftco-heading-2">Social media</h2>
                     <ul class="list-unstyled">
-                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Web Design</a></li>
-                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Web Development</a></li>
-                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Business Strategy</a></li>
-                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Data Analysis</a></li>
-                        <li><a href="#"><span class="icon-long-arrow-right mr-2"></span>Graphic Design</a></li>
+                        <li><a href="https://www.facebook.com/shaharier.all"><span class="icon-long-arrow-right mr-2"></span>Facebook</a></li>
+                        <li><a href="https://www.linkedin.com/in/shahariar-shifat-6616a122b/"><span class="icon-long-arrow-right mr-2"></span>linkedin</a></li>
+                        <li><a href="https://github.com/shahariarr"><span class="icon-long-arrow-right mr-2"></span>Github</a></li>
+                        <li><a href="https://twitter.com/login"><span class="icon-long-arrow-right mr-2"></span>Twitter</a></li>
                     </ul>
                 </div>
             </div>
@@ -66,7 +65,7 @@
                     Copyright &copy;
                     <script>
                         document.write(new Date().getFullYear());
-                    </script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    </script> All rights reserved | Developer portfolio by <a href="https://github.com/shahariarr" target="_blank">Shahariar Rahamna</a>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                 </p>
             </div>
