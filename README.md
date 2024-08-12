@@ -101,7 +101,7 @@ Update your .env file with your database credentials:
 ## Project Outcome
 The **Profile Crafting System** empowers users to create their profiles and portfolio websites without requiring any coding skills. The generated website and CV can be effectively used for career advancement and job applications. The project has been successfully completed and is now live, providing users with easy access to the service.
 
-**Live Project URL:** [Profile Crafting System](https://profile-crafting-system.infinityfreeapp.com)
+**Live Project URL:** [Profile Crafting System](https://profile-crafting.infinityfreeapp.com)
 
 ## Future Enhancements
 - **Customization Options:** Adding more customization options for portfolio templates to allow users greater flexibility in designing their websites.
