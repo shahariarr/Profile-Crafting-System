@@ -3,7 +3,7 @@
 ## Introduction
 **Profile Crafting System** is a user-friendly platform designed to allow users to create personal profiles and portfolio websites without requiring any coding skills. By simply inputting their information, users can automatically generate a professional portfolio website and an industrial-grade CV, which can be used for career or job purposes.
 
-**Live Project URL:** [Profile Crafting System](https://profile-crafting-system.infinityfreeapp.com)
+**Live Project URL:** [Profile Crafting System](https://profile-crafting.infinityfreeapp.com)
 
 ## Table of Contents
 - [Features](#features)
